@@ -27,8 +27,8 @@ async def is_legacy(username: str) -> bool:
                         legacy_accounts.append(username)
 
                         return True
-    except Exception as e:
-        print(e)
+    except Exception:
+        pass
 
     return False
 
