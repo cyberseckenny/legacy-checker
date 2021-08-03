@@ -6,7 +6,7 @@ Contents of `accounts.txt`
 ```
 Liam
 death
-live
+Life
 Minions
 Fox
 ```
@@ -18,4 +18,5 @@ python legacy.py accounts.txt
 
 Found legacy account Liam.
 Found legacy account death.
+Found legacy account Life.
 ```
