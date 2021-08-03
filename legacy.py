@@ -34,6 +34,8 @@ async def is_legacy(username: str) -> bool:
 
 
 async def main(username_file: str):
+    print('')
+
     if exists(username_file):
         usernames: list[str] = list()
 
