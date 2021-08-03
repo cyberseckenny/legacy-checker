@@ -4,8 +4,11 @@ import aiohttp
 import json
 from colorama import Fore, init
 from os.path import exists
+import time
 
 init()
+
+legacy_accounts: list[str] = list()
 
 
 async def is_legacy(username: str) -> bool:
@@ -18,7 +21,9 @@ async def is_legacy(username: str) -> bool:
                 if 'legacy' in json_data:
                     if json_data['legacy'] == True:
                         print(
-                            f'Found legacy account {Fore.LIGHTYELLOW_EX}{username}{Fore.RESET}.')
+                            f'{Fore.RESET}Found legacy account {Fore.LIGHTYELLOW_EX}{username}{Fore.RESET}.')
+                        legacy_accounts.append(username)
+
                         return True
     except Exception as e:
         print(e)
@@ -38,6 +43,12 @@ async def main(username_file: str):
 
         coroutines = [is_legacy(username) for username in usernames]
         await asyncio.gather(*coroutines, return_exceptions=True)
+
+        legacy_accounts_file = str(int(time.time())) + '_legacy_accounts.txt'
+        if len(legacy_accounts) > 0:
+            for account in legacy_accounts:
+                with open(legacy_accounts_file, 'w') as f:
+                    f.write(f'{account}\n')
 
     else:
         print(f'{Fore.LIGHTRED_EX}File {username_file} does not exist.')
