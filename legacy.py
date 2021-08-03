@@ -49,10 +49,15 @@ async def main(username_file: str):
         await asyncio.gather(*coroutines, return_exceptions=True)
 
         legacy_accounts_file = str(int(time.time())) + '_legacy_accounts.txt'
-        if len(legacy_accounts) > 0:
+        legacy_accounts_len = len(legacy_accounts)
+
+        if legacy_accounts_len > 0:
             with open(legacy_accounts_file, 'w') as f:
                 for account in legacy_accounts:
                     f.write(f'{account}\n')
+
+        print('')
+        print(f'Wrote {Fore.LIGHTYELLOW_EX}{legacy_accounts_len}{Fore.RESET} accounts to {Fore.LIGHTYELLOW_EX}{legacy_accounts_file}{Fore.RESET}.')
 
     else:
         print(f'{Fore.LIGHTRED_EX}File {username_file} does not exist.')
