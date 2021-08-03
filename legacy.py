@@ -13,8 +13,10 @@ legacy_accounts: list[str] = list()
 
 async def is_legacy(username: str) -> bool:
     url = f'https://api.ashcon.app/mojang/v2/user/{username}'
+    session_timeout = aiohttp.ClientTimeout(total=10)
+
     try:
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(timeout=session_timeout) as session:
             async with session.get(url) as response:
                 text = await response.text()
                 json_data = json.loads(text)
