@@ -60,6 +60,7 @@ async def main(username_file: str):
                 f'Wrote {Fore.LIGHTYELLOW_EX}{legacy_accounts_len}{Fore.RESET} accounts to {Fore.LIGHTYELLOW_EX}{legacy_accounts_file}{Fore.RESET}.')
         else:
             print(f'{Fore.LIGHTRED_EX}No legacy accounts found.')
+        print('')
 
     else:
         print(f'{Fore.LIGHTRED_EX}File {username_file} does not exist.')
