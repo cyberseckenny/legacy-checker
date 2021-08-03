@@ -51,13 +51,15 @@ async def main(username_file: str):
         legacy_accounts_file = str(int(time.time())) + '_legacy_accounts.txt'
         legacy_accounts_len = len(legacy_accounts)
 
+        print('')
         if legacy_accounts_len > 0:
             with open(legacy_accounts_file, 'w') as f:
                 for account in legacy_accounts:
                     f.write(f'{account}\n')
-
-        print('')
-        print(f'Wrote {Fore.LIGHTYELLOW_EX}{legacy_accounts_len}{Fore.RESET} accounts to {Fore.LIGHTYELLOW_EX}{legacy_accounts_file}{Fore.RESET}.')
+            print(
+                f'Wrote {Fore.LIGHTYELLOW_EX}{legacy_accounts_len}{Fore.RESET} accounts to {Fore.LIGHTYELLOW_EX}{legacy_accounts_file}{Fore.RESET}.')
+        else:
+            print(f'{Fore.LIGHTRED_EX}No legacy accounts found.')
 
     else:
         print(f'{Fore.LIGHTRED_EX}File {username_file} does not exist.')
