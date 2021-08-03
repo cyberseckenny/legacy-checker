@@ -11,7 +11,6 @@ Fox
 
 Running `legacy.py`
 ```
+pip install -r requirements.txt
 python legacy.py accounts.txt
-
-Found legacy account Endo.
 ```
