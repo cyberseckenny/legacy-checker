@@ -13,7 +13,7 @@ legacy_accounts: list[str] = list()
 
 async def is_legacy(username: str) -> bool:
     url = f'https://api.ashcon.app/mojang/v2/user/{username}'
-    session_timeout = aiohttp.ClientTimeout(total=10)
+    session_timeout = aiohttp.ClientTimeout(total=5)
 
     try:
         async with aiohttp.ClientSession(timeout=session_timeout) as session:
