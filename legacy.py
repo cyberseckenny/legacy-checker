@@ -48,8 +48,8 @@ async def main(username_file: str):
 
         legacy_accounts_file = str(int(time.time())) + '_legacy_accounts.txt'
         if len(legacy_accounts) > 0:
-            for account in legacy_accounts:
-                with open(legacy_accounts_file, 'w') as f:
+            with open(legacy_accounts_file, 'w') as f:
+                for account in legacy_accounts:
                     f.write(f'{account}\n')
 
     else:
