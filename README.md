@@ -19,4 +19,6 @@ python legacy.py accounts.txt
 Found legacy account Liam.
 Found legacy account death.
 Found legacy account Life.
+
+Wrote 3 accounts to 1628106113_legacy_accounts.txt.
 ```
