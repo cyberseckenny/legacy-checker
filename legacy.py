@@ -4,6 +4,7 @@ import aiohttp
 import json
 from colorama import Fore, init
 from os.path import exists
+from os import mkdir
 import time
 
 init()
@@ -46,12 +47,15 @@ async def main(username_file: str):
         coroutines = [is_legacy(username) for username in usernames]
         await asyncio.gather(*coroutines, return_exceptions=True)
 
+        if not exists('output'):
+            mkdir('output')
+
         legacy_accounts_file = str(int(time.time())) + '_legacy_accounts.txt'
         legacy_accounts_len = len(legacy_accounts)
 
         print('')
         if legacy_accounts_len > 0:
-            with open(legacy_accounts_file, 'w') as f:
+            with open('output/' + legacy_accounts_file, 'w') as f:
                 for account in legacy_accounts:
                     f.write(f'{account}\n')
             print(
