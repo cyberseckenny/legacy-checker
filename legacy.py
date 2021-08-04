@@ -29,7 +29,7 @@ async def is_legacy(username: str) -> bool:
 
                         return True
     except Exception:
-        print(f'{Fore.RED}Error checking for name {username}.')
+        print(f'{Fore.LIGHTRED_EX}Error checking for name {username}.')
 
     return False
 
@@ -59,7 +59,7 @@ async def main(username_file: str):
                 for account in legacy_accounts:
                     f.write(f'{account}\n')
             print(
-                f'Wrote {Fore.LIGHTYELLOW_EX}{legacy_accounts_len}{Fore.RESET} accounts to {Fore.LIGHTYELLOW_EX}{legacy_accounts_file}{Fore.RESET}.')
+                f'{Fore.RESET}Wrote {Fore.LIGHTYELLOW_EX}{legacy_accounts_len}{Fore.RESET} accounts to {Fore.LIGHTYELLOW_EX}{legacy_accounts_file}{Fore.RESET}.')
         else:
             print(f'{Fore.LIGHTRED_EX}No legacy accounts found.')
         print('')
