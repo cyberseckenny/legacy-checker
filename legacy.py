@@ -28,7 +28,7 @@ async def is_legacy(username: str) -> bool:
 
                         return True
     except Exception:
-        pass
+        print(f'{Fore.RESET}Error checking for not {username}.')
 
     return False
 
